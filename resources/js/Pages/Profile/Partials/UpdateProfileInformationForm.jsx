@@ -16,6 +16,7 @@ export default function UpdateProfileInformation({
         useForm({
             name: user.name,
             email: user.email,
+            mobile: user.mobile
         });
 
     const submit = (e) => {
@@ -67,6 +68,21 @@ export default function UpdateProfileInformation({
                     />
 
                     <InputError className="mt-2" message={errors.email} />
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="mobile" value="Mobile" />
+
+                    <TextInput
+                        id="mobile"
+                        className="mt-1 block w-full"
+                        value={data.mobile}
+                        onChange={(e) => setData('mobile', e.target.value)}
+                        required
+                        isFocused
+                    />
+
+                    <InputError className="mt-2" message={errors.mobile} />
                 </div>
 
                 {mustVerifyEmail && user.email_verified_at === null && (

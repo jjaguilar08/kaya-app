@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('mobile');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('user_type')->nullable();
@@ -45,6 +46,7 @@ return new class extends Migration
             [
                 'name' => 'Admin User',
                 'email' => 'admin@kaya.ph',
+                'mobile' => '0912345689',
                 'password' => Hash::make('password123'),
                 'user_type' => 'admin',
                 'employer_id' => null, // Nullable for Admin
@@ -54,6 +56,7 @@ return new class extends Migration
             [
                 'name' => 'Employer User',
                 'email' => 'employer@kaya.ph',
+                'mobile' => '0912345689',
                 'password' => Hash::make('password123'),
                 'user_type' => 'employer',
                 'employer_id' => null, // Nullable for Employer
@@ -63,6 +66,7 @@ return new class extends Migration
             [
                 'name' => 'Employee User',
                 'email' => 'employee@kaya.ph',
+                'mobile' => '0912345689',
                 'password' => Hash::make('password123'),
                 'user_type' => 'employee',
                 'employer_id' => 2, // Assuming employer with ID 2

@@ -1,14 +1,42 @@
-import { Home, Hand, DollarSign, Wrench, Settings } from "lucide-react";
+import {
+    Home,
+    Hand,
+    DollarSign,
+    Wrench,
+    Settings,
+    Banknote,
+    Users,
+} from "lucide-react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 
-export default function Sidebar({ activeTab, setActiveTab }) {
-    const menuItems = [
+export default function Sidebar({ activeTab, setActiveTab, user }) {
+    // Define menu items based on user type
+    const employeeMenu = [
         { name: "Dashboard", icon: <Home size={18} /> },
         { name: "Loan Application", icon: <Hand size={18} /> },
         { name: "My Loans", icon: <DollarSign size={18} /> },
+        { name: "Repayments", icon: <Banknote size={18} /> },
         { name: "Services", icon: <Wrench size={18} /> },
-        { name: "Settings", icon: <Settings size={18} /> },
     ];
+
+    const employerMenu = [
+        { name: "Dashboard", icon: <Home size={18} /> },
+        { name: "Manage Employees", icon: <Users size={18} /> },
+        { name: "Loans & Applications", icon: <Hand size={18} /> },
+        { name: "Repayment Requests", icon: <Banknote size={18} /> },
+    ];
+
+    const adminMenu = [
+        { name: "Dashboard", icon: <Home size={18} /> },
+        { name: "Loans & Applications", icon: <Hand size={18} /> },
+    ];
+
+    const menuItems =
+        user.user_type === "employer"
+            ? employerMenu
+            : user.user_type === "admin"
+            ? adminMenu
+            : employeeMenu;
 
     return (
         <aside className="w-64 bg-white shadow-md flex flex-col">
@@ -18,7 +46,7 @@ export default function Sidebar({ activeTab, setActiveTab }) {
             </div>
 
             {/* Navigation */}
-            <nav className="flex-1 px-2 py-4">
+            <nav className="flex-1 px-2 py-4 overflow-y-auto">
                 <ul className="space-y-1">
                     {menuItems.map((item) => (
                         <li key={item.name}>
