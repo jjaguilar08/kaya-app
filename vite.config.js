@@ -7,13 +7,15 @@ export default defineConfig({
         laravel({
             input: 'resources/js/app.jsx',
             refresh: true,
+            publicDirectory: 'public',
         }),
         react(),
     ],
-    server: {
-        host: '0.0.0.0',
-        hmr: {
-            host: 'localhost'
-        },
-    },
+    build: {
+        manifest: true,
+        outDir: 'public/build',
+        rollupOptions: {
+            input: 'resources/js/app.jsx'
+        }
+    }
 });
