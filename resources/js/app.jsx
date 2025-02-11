@@ -4,11 +4,6 @@ import './bootstrap';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
-import axios from 'axios'
-
-// Add this CSRF configuration
-axios.defaults.withCredentials = true;
-axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]')?.content;
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
